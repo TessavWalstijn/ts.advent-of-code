@@ -1,0 +1,25 @@
+{
+  "name": "ts.advent-of-code",
+  "version": "1.0.0",
+  "description": "Advent of Code",
+  "main": "index.ts",
+  "repository": "git@github.com:TessavWalstijn/ts.advent-of-code.git",
+  "author": "TessavWalstijn <email@TessavWalstijn.com>",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "ts-node-dev ./index.ts",
+    "test": "vitest",
+    "start": "ts-node-esm ./index.ts"
+  },
+  "dependencies": {
+    "@types/inquirer": "^9.0.7",
+    "inquirer": "^9.2.12",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.1"
+  }
+}
