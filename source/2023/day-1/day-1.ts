@@ -50,7 +50,6 @@ export const firstLastDigitAndSum = (lines: string[], regex: RegExp) => {
       // Magic matching overlapping regex
       // https://stackoverflow.com/a/33903830/7185314
       const found = Array.from(line.matchAll(regex), (match) => {
-        console.log(match)
         return match[1]
       })
 
