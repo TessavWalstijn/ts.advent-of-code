@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { __dirname } from '../../utils/dirname.ts'
+import { getLinesFromInput } from '../../utils/getLinesFromInput.ts'
 
 export const textNumbers = [
   'zero',
@@ -77,12 +78,7 @@ export const regexPart2 =
   /(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))/g
 
 export const day1 = () => {
-  const input = fs.readFileSync(
-    path.join(__dirname(import.meta.url), '/input.txt'),
-    'utf8',
-  )
-
-  const lines = input.split('\n')
+  const lines = getLinesFromInput(__dirname(import.meta.url))
   console.log('Part 1: ', firstLastDigitAndSum(lines, regexPart1))
   console.log('Part 2: ', firstLastDigitAndSum(lines, regexPart2))
 }

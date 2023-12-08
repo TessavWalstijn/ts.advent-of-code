@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { __dirname } from '../../utils/dirname.ts'
+import { getLinesFromInput } from '../../utils/getLinesFromInput.ts'
 
 export const bag = {
   red: 12,
@@ -134,12 +135,7 @@ const generateGameObject = (line: string): tGame | null => {
 }
 
 export const day2 = () => {
-  const input = fs.readFileSync(
-    path.join(__dirname(import.meta.url), '/input.txt'),
-    'utf8',
-  )
-
-  const lines = input.split('\n')
+  const lines = getLinesFromInput(__dirname(import.meta.url))
   const games = getGames(lines)
   possibleGamesAndSum(games)
   console.log(powerOfGamesToSum(games))
