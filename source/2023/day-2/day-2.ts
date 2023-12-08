@@ -27,6 +27,7 @@ export const possibleGamesAndSum = (lines: string[]) => {
   })
 
   console.log(awnser)
+  return awnser
 }
 
 type tGame = {
