@@ -8,11 +8,12 @@ export const bag = {
   blue: 14,
 }
 
-export const possibleGamesAndSum = (lines: string[]) => {
-  const games = lines
+export const getGames = (lines: string[]) =>
+  lines
     .map((line) => generateGameObject(line))
     .filter((game) => game !== null) as unknown as tGame[]
 
+export const possibleGamesAndSum = (games: tGame[]) => {
   let awnser = 0
 
   games.forEach(({ gameId, sets }) => {
@@ -29,6 +30,45 @@ export const possibleGamesAndSum = (lines: string[]) => {
   console.log(awnser)
   return awnser
 }
+
+export const powerOfGame = ({ sets }: tGame) => {
+  let minimumBag = {
+    red: 0,
+    green: 0,
+    blue: 0,
+  }
+
+  sets.forEach((set) => {
+    set.forEach((pull) => {
+      const { color, amount } = pull
+
+      switch (color) {
+        case 'green':
+          if (amount > minimumBag.green) {
+            minimumBag.green = amount
+          }
+          break
+        case 'blue':
+          if (amount > minimumBag.blue) {
+            minimumBag.blue = amount
+          }
+          break
+        case 'red':
+          if (amount > minimumBag.red) {
+            minimumBag.red = amount
+          }
+          break
+      }
+    })
+  })
+
+  return minimumBag.green * minimumBag.blue * minimumBag.red
+}
+
+export const powerOfGamesToSum = (games: tGame[]) =>
+  games
+    .map((game) => powerOfGame(game))
+    .reduce((p: number, n: number) => (p += n), 0)
 
 type tGame = {
   gameId: number
@@ -100,5 +140,7 @@ export const day2 = () => {
   )
 
   const lines = input.split('\n')
-  possibleGamesAndSum(lines)
+  const games = getGames(lines)
+  possibleGamesAndSum(games)
+  console.log(powerOfGamesToSum(games))
 }
