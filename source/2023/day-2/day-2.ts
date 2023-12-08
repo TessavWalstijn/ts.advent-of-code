@@ -28,7 +28,6 @@ export const possibleGamesAndSum = (games: tGame[]) => {
     }
   })
 
-  console.log(awnser)
   return awnser
 }
 
@@ -137,6 +136,6 @@ const generateGameObject = (line: string): tGame | null => {
 export const day2 = () => {
   const lines = getLinesFromInput(__dirname(import.meta.url))
   const games = getGames(lines)
-  possibleGamesAndSum(games)
-  console.log(powerOfGamesToSum(games))
+  console.log('Part 1: ', possibleGamesAndSum(games))
+  console.log('Part 2: ', powerOfGamesToSum(games))
 }
