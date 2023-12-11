@@ -1,5 +1,12 @@
 import { describe, expect, test } from 'vitest'
-import { clearNumbers, getNumbers, checkNumbers } from './day-3.ts'
+import {
+  clearNumbers,
+  getNumbers,
+  checkNumbers,
+  sumNumbers,
+  getStars,
+  getStarNumbers,
+} from './day-3.ts'
 
 const grid = [
   '467..114..',
@@ -70,9 +77,91 @@ describe('Test checkNumbers function', () => {
     ]
 
     const numbers = getNumbers(grid)
-    const clearLines = clearNumbers(grid)
-    const newNumbers = checkNumbers(numbers, clearLines)
+    // const clearLines = clearNumbers(grid)
+    const newNumbers = checkNumbers(numbers, grid)
 
     expect(newNumbers).toEqual(result)
+  })
+})
+
+describe('Test sumNumbers function', () => {
+  test('Correct from example', () => {
+    const numbers = getNumbers(grid)
+    // const clearLines = clearNumbers(grid)
+    const newNumbers = checkNumbers(numbers, grid)
+    const output = sumNumbers(numbers)
+
+    expect(output).toEqual(4361)
+  })
+})
+
+describe('Test getStars function', () => {
+  test('Correct from example', () => {
+    const result = [
+      {
+        line: 1,
+        numberA: 0,
+        numberB: 0,
+        start: 3,
+        valid: null,
+        value: 0,
+      },
+      {
+        line: 4,
+        numberA: 0,
+        numberB: 0,
+        start: 3,
+        valid: null,
+        value: 0,
+      },
+      {
+        line: 8,
+        numberA: 0,
+        numberB: 0,
+        start: 5,
+        valid: null,
+        value: 0,
+      },
+    ]
+
+    const stars = getStars(grid)
+
+    expect(stars).toEqual(result)
+  })
+})
+
+describe('Test getStarNumbers function', () => {
+  test('Correct from example', () => {
+    const result = [
+      {
+        line: 1,
+        numberA: 467,
+        numberB: 35,
+        start: 3,
+        valid: null,
+        value: 0,
+      },
+      {
+        line: 4,
+        numberA: 617,
+        numberB: 0,
+        start: 3,
+        valid: null,
+        value: 0,
+      },
+      {
+        line: 8,
+        numberA: 755,
+        numberB: 598,
+        start: 5,
+        valid: null,
+        value: 0,
+      },
+    ]
+
+    const stars = getStars(grid)
+    const numbers = getStarNumbers(stars, grid)
+
+    expect(numbers).toEqual(result)
   })
 })
